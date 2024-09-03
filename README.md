@@ -1,42 +1,24 @@
-# NewsletterGen Crew with GUI
+# Newsletter Generator GUI
 
-Welcome to the NewsletterGen Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Welcome to the Newsletter Generator  project, powered by [crewAI](https://crewai.com) and streamlit. 
 
 ## Installation
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
+Ensure you run pip install -r requirements on your system. 
 
-First, if you haven't already, install Poetry:
-
-```bash
-pip install poetry
-```
-
-Next, navigate to your project directory and install the dependencies:
-
-1. First lock the dependencies and then install them:
-```bash
-poetry lock
-```
-```bash
-poetry install
-```
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/newsletter_gen/config/agents.yaml` to define your agents
-- Modify `src/newsletter_gen/config/tasks.yaml` to define your tasks
-- Modify `src/newsletter_gen/crew.py` to add your own logic, tools and specific args
-- Modify `src/newsletter_gen/main.py` to add custom inputs for your agents and tasks
+<!-- OPENAI_API_KEY 
+EXA_API_KEY 
+GROQ_API_KEY 
+ANTHROPIC_API_KEY  -->
 
 ## Running the Project
 
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
-```bash
-poetry run newsletter_gen
-```
+streamlit run app.py
 
 This command initializes the newsletter-gen Crew, assembling the agents and assigning them tasks as defined in your configuration.
 
