@@ -1,6 +1,6 @@
 openai
 streamlit
-python = ">=3.10,<=3.13"
+#python = ">=3.10,<=3.13"
 crewai = {extras = ["tools"], version = "^0.51.0"}
 exa-py = "^1.0.9"
 langchain = "0.1.17"
