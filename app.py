@@ -6,7 +6,7 @@ class NewsletterGenUI:
 
     def load_html_template(self):
         print("Current working directory:", os.getcwd())
-        with open("src/newsletter_gen/config/newsletter_template.html", "r") as file:
+        with open("newsletter_gen/config/newsletter_template.html", "r") as file:
             html_template = file.read()
 
         return html_template
