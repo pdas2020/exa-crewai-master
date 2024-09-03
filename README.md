@@ -50,8 +50,4 @@ The newsletter-gen Crew is composed of multiple AI agents, each with unique role
 
 For support, questions, or feedback regarding the NewsletterGen Crew or crewAI.
 - Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Joing our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat wtih our docs](https://chatg.pt/DWjSBZn)
-
 Let's create wonders together with the power and simplicity of crewAI.
