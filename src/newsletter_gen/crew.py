@@ -11,8 +11,11 @@ import json
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from dotenv import load_dotenv
+#load_dotenv()
 
-load_dotenv()
+# Access the environment variable
+# In your Python code, access the API key using the `os` module
+# anthropic_api_key = os.environ.get('ANTHROPIC_API_KEY')  # Get the API key from the environment variable
 
 @CrewBase
 class NewsletterGenCrew:
@@ -22,13 +25,17 @@ class NewsletterGenCrew:
     tasks_config = "config/tasks.yaml"
 
     def llm(self):
-        #llm = ChatAnthropic(model_name="claude-3-haiku-20240307", max_tokens=4096)
-        llm = ChatAnthropic(model_name="claude-3-sonnet-20240229", max_tokens=4096)
-        #llm = ChatGroq(model="llama3-70b-8192")
-        #llm = ChatGroq(model="llama3-8b-8192")
+        api_key = os.getenv('ANTHROPIC_API_KEY')
+        print(f"API Key: {'Set' if api_key else 'Not Set'}")
+        llm = ChatAnthropic(model_name="claude-3-sonnet-20240229",
+                            max_tokens=4096,
+                            anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')
+                            )
+        # llm = ChatGroq(model="llama3-70b-8192")
         # llm = ChatGroq(model="mixtral-8x7b-32768")
         # llm = ChatGoogleGenerativeAI(google_api_key=os.getenv("GOOGLE_API_KEY"))
-        return llm
+
+        return llm    
     
     def step_callback(
             self,
