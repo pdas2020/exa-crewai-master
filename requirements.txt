@@ -1,7 +1,10 @@
 openai
 streamlit
+poetry
+crewai
 #python = ">=3.10,<=3.13"
-crewai = {extras = ["tools"], version = "^0.51.0"}
+#crewai = {extras = ["tools"], version = "^0.51.0"}
+crewai[tools]>=0.51.0
 exa-py = "^1.0.9"
 langchain = "0.1.17"
 langchain-core = "0.1.52"
