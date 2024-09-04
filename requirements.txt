@@ -1,7 +1,8 @@
 openai
 streamlit
 poetry
-crewai[tools]
+crewai
+crewai-tools
 exa-py
 langchain
 langchain-core

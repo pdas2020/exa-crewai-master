@@ -11,6 +11,7 @@ import json
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from dotenv import load_dotenv
+from langchain_community.llms import Ollama
 #load_dotenv()
 
 # Access the environment variable
@@ -24,17 +25,23 @@ class NewsletterGenCrew:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
+    # def llm(self):
+    #     return Ollama(
+    #         base_url="http://localhost:11434",
+    #         model="llama3.1"  # whichever model you're using
+    #     )
+
     def llm(self):
         api_key = os.getenv('ANTHROPIC_API_KEY')
         print(f"API Key: {'Set' if api_key else 'Not Set'}")
         llm = ChatAnthropic(model_name="claude-3-sonnet-20240229",
-                            max_tokens=4096,
-                            anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')
-                            )
-        # llm = ChatGroq(model="llama3-70b-8192")
+                             max_tokens=4096,
+                             anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')
+                             )
+        #llm = ChatGroq(model="llama3-70b-8192",max_tokens=4096,groq_api_key=os.getenv('GROQ_API_KEY'))
         # llm = ChatGroq(model="mixtral-8x7b-32768")
         # llm = ChatGoogleGenerativeAI(google_api_key=os.getenv("GOOGLE_API_KEY"))
-
+        print("LLM: ",llm)
         return llm    
     
     def step_callback(

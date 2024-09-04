@@ -6,9 +6,12 @@ class NewsletterGenUI:
 
     def load_html_template(self):
         print("Current working directory:", os.getcwd())
-        with open("newsletter_gen/config/newsletter_template.html", "r") as file:
-            html_template = file.read()
-
+        try:
+            with open("newsletter_gen/config/newsletter_template.html", "r") as file:
+                html_template = file.read()
+        except FileNotFoundError:
+            st.error("Template file not found.")
+            html_template = ""
         return html_template
 
     def generate_newsletter(self, topic, personal_message):
@@ -19,8 +22,16 @@ class NewsletterGenUI:
         }
         return NewsletterGenCrew().crew().kickoff(inputs=inputs)
 
+    def get_bytes_from_crew_output(self, crew_output):
+        # Convert your CrewOutput instance to bytes here
+        # Example conversion if CrewOutput contains text
+        if isinstance(crew_output, str):
+            return crew_output.encode('utf-8')
+        else:
+            return str(crew_output).encode('utf-8')
+
     def newsletter_generation(self):
-        st.title ("AI Newsletter Generator")
+        st.title("AI Newsletter Generator")
         if st.session_state.generating:
             st.session_state.newsletter = self.generate_newsletter(
                 st.session_state.topic, st.session_state.personal_message
@@ -29,12 +40,13 @@ class NewsletterGenUI:
         if st.session_state.newsletter and st.session_state.newsletter != "":
             with st.container():
                 st.write("Newsletter generated successfully!")
-                st.download_button(
-                    label="Download HTML file",
-                    data=st.session_state.newsletter,
-                    file_name="newsletter.html",
-                    mime="text/html",
-                )
+            st.download_button(
+                label="Download File",
+                data = self.get_bytes_from_crew_output(st.session_state.newsletter),
+                file_name="newsletter.html",
+                mime="text/plain"
+            )
+
             st.session_state.generating = False
 
     def sidebar(self):
